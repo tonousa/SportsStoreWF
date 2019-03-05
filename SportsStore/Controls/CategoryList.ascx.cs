@@ -22,6 +22,12 @@ namespace SportsStore.Controls
             return string.Format("<a href='{0}'>Home</a>", path);
         }
 
+        protected string CreateLinkHtml(string category)
+        {
+            string path = RouteTable.Routes.GetVirtualPath(null, null, 
+                new RouteValueDictionary() { {"category", category}, {"page", "1"} }).VirtualPath;
+            return string.Format("<a href='{0}'>{1}</a>", path, category);
+        }
         protected IEnumerable<string> GetCategories()
         {
             return new Repository().Products
