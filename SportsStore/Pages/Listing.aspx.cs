@@ -21,10 +21,17 @@ namespace SportsStore.Pages
 
         public IEnumerable<Product> GetProducts()
         {
-            return repo.Products
+            return FilterProducts()
                 .OrderBy(p => p.ProductID)
                 .Skip((CurrentPage - 1) * pageSize)
                 .Take(pageSize);
+        }
+
+        private IEnumerable<Product> FilterProducts()
+        {
+            IEnumerable<Product> products = repo.Products;
+            string currentCategory = (string)RouteData.Values["category"] ??
+                Request.QueryString["category"];
         }
 
         protected int CurrentPage
