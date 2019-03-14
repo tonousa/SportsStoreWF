@@ -32,6 +32,8 @@ namespace SportsStore.Pages
             IEnumerable<Product> products = repo.Products;
             string currentCategory = (string)RouteData.Values["category"] ??
                 Request.QueryString["category"];
+            return currentCategory == null ? products
+                : products.Where(p => p.Category == currentCategory);
         }
 
         protected int CurrentPage
@@ -48,7 +50,8 @@ namespace SportsStore.Pages
         {
             get
             {
-                return (int)Math.Ceiling((decimal)repo.Products.Count() / pageSize);
+                int productCount = FilterProducts().Count();
+                return (int)Math.Ceiling((decimal)productCount / pageSize);
             }
         }
 
