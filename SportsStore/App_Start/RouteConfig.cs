@@ -14,6 +14,8 @@ namespace SportsStore
             routes.MapPageRoute(null, "list/{page}", "~/pages/Listing.aspx");
             routes.MapPageRoute(null, "", "~/Pages/Listing.aspx");
             routes.MapPageRoute(null, "list", "~/Pages/Listing.aspx");
+
+            routes.MapPageRoute("cart", "cart", "~/pages/CartView.aspx");
         }
     }
 }
