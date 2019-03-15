@@ -16,7 +16,22 @@ namespace SportsStore.Pages.Helpers
     {
         public static void Set(HttpSessionState session, SessionKey key, object value)
         {
-            session[Enum.GetName(key] = value;
+            session[Enum.GetName(typeof(SessionKey),key)] = value;
         }
+
+        public static T Get<T>(HttpSessionState session, SessionKey key)
+        {
+            object dataValue = session[Enum.GetName(typeof(SessionKey), key)];
+            if (dataValue != null && dataValue is T)
+            {
+                return (T)dataValue;
+            }
+            else
+            {
+                return default(T);
+            }
+        }
+
+
     }
 }
