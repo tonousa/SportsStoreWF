@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportsStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -32,6 +33,15 @@ namespace SportsStore.Pages.Helpers
             }
         }
 
-
+        public static Cart GetCart(HttpSessionState session)
+        {
+            Cart myCart = Get<Cart>(session, SessionKey.CART);
+            if (myCart == null)
+            {
+                myCart = new Cart();
+                Set(session, SessionKey.CART, myCart);
+            }
+            return myCart;
+        }
     }
 }
