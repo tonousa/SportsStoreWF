@@ -1,4 +1,5 @@
-﻿using SportsStore.Pages.Helpers;
+﻿using SportsStore.Models;
+using SportsStore.Pages.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
