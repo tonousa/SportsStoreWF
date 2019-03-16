@@ -17,7 +17,7 @@
                     <tr>
                         <td><%# Item.Quantity%></td>
                         <td><%# Item.Product.Name%></td>
-                        <td><%# Item.Product.Price%></td>
+                        <td><%# Item.Product.Price.ToString("c")%></td>
                         <td><%# (Item.Quantity * 
                                     Item.Product.Price).ToString("c")%></td>
                     </tr>
