@@ -1,4 +1,5 @@
 ﻿using SportsStore.Models;
+using SportsStore.Models.Repository;
 using SportsStore.Pages.Helpers;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,22 @@ namespace SportsStore.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+            {
+                Repository repo = new Repository();
+                int prodId;
 
+                if (int.TryParse(Request.Form["remove"], out prodId)) ;
+                {
+                    Product prodToRemove = repo.Products.Where(
+                        p => p.ProductID == prodId).FirstOrDefault();
+                    if (prodToRemove != null)
+                    {
+                        // remove from cart
+                        SessionHelpers.GetCart(Session).RemoveLine(prodToRemove);
+                    }
+                }
+            }
         }
 
         public IEnumerable<CartLine> GetCartLines()
