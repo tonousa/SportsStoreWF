@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -19,7 +20,7 @@ namespace SportsStore.Pages
                 Repository repo = new Repository();
                 int prodId;
 
-                if (int.TryParse(Request.Form["remove"], out prodId)) ;
+                if (int.TryParse(Request.Form["remove"], out prodId))
                 {
                     Product prodToRemove = repo.Products.Where(
                         p => p.ProductID == prodId).FirstOrDefault();
@@ -50,6 +51,15 @@ namespace SportsStore.Pages
             get
             {
                 return SessionHelpers.Get<string>(Session, SessionKey.RETURN_URL);
+            }
+        }
+
+        public string CheckoutUrl
+        {
+            get
+            {
+                return RouteTable.Routes.GetVirtualPath(null, "checkout",
+                    null).VirtualPath;
             }
         }
     }
