@@ -24,6 +24,21 @@
             <div><label for="line3">Line 3:</label><input id="line3" name="line3" /></div>
             <div><label for="city">City:</label><input id="city" name="city" /></div>
             <div><label for="state">State:</label><input id="state" name="state" /></div>
+
+            <h3>Options</h3>
+            <input type="checkbox" id="giftwrap" name="giftwrap" value="true" />
+            Gift wrap these items?
+
+            <p class="actionButtons">
+                <button class="actionButtons" type="submit">Complete Order</button>
+            </p>
+        </div>
+        <div id="checkoutMessage" runat="server">
+            <h2>Thanks</h2>
+            Thanks for placing your order
+        </div>
+        <div>
+
         </div>
     </div>
 </asp:Content>
