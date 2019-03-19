@@ -1,4 +1,6 @@
 ﻿using SportsStore.Models;
+using SportsStore.Models.Repository;
+using SportsStore.Pages.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +25,25 @@ namespace SportsStore.Pages
                 if (TryUpdateModel(myOrder, 
                     new FormValueProvider(ModelBindingExecutionContext)))
                 {
+                    myOrder.OrderLines = new List<OrderLine>();
 
+                    Cart myCart = SessionHelpers.GetCart(Session);
+
+                    foreach (CartLine line in myCart.Lines)
+                    {
+                        myOrder.OrderLines.Add(new OrderLine
+                        {
+                            Order = myOrder,
+                            Product = line.Product,
+                            Quantity = line.Quantity
+                        });
+                    }
+
+                    new Repository().SaveOrder(myOrder);
+                    myCart.Clear();
+
+                    checkoutForm.Visible = false;
+                    checkoutMessage.Visible = true;
                 }
             }
         }
