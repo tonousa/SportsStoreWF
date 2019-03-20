@@ -8,7 +8,7 @@ namespace SportsStore.Controls
 {
     public class VInput : WebControl
     {
-        private string nspace = "SportsStore.Controls";
+        private string nspace = "SportsStore.Models";
         private string model = "Order";
 
         public string Namespace
@@ -33,7 +33,23 @@ namespace SportsStore.Controls
             Type modelType = Type.GetType(string.Format("{0}.{1}", Namespace, Model));
             PropertyInfo propInfo = modelType.GetProperty(Property);
             var attr = propInfo.GetCustomAttribute<RequiredAttribute>(false);
+            if (attr != null)
+            {
+                output.AddAttribute("data-val", "true");
+                output.AddAttribute("data-val-required", attr.ErrorMessage);
+            }
+            output.RenderBeginTag("input");
+            output.RenderEndTag();
+        }
 
+        public override void RenderBeginTag(HtmlTextWriter writer)
+        {
+            //base.RenderBeginTag(writer);
+        }
+
+        public override void RenderEndTag(HtmlTextWriter writer)
+        {
+            //base.RenderEndTag(writer);
         }
     }
 }
