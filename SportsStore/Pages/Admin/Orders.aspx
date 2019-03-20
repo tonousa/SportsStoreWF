@@ -9,10 +9,10 @@
                     ItemType="SportsStore.Models.Order">
                     <ItemTemplate>
                         <tr>
-                            <td><%: Item.Name %></td>
-                            <td><%: Item.City %></td>
-                            <td><%: Item.OrderLines.Sum(ol => ol.Quantity) %></td>
-                            <td><%: Total(Item.OrderLines).ToStrin("C") %></td>
+                            <td><%#: Item.Name %></td>
+                            <td><%#: Item.City %></td>
+                            <td><%# Item.OrderLines.Sum(ol => ol.Quantity) %></td>
+                            <td><%# Total(Item.OrderLines).ToString("C") %></td>
                             <td>
                                 <asp:PlaceHolder Visible="<%# !Item.Dispatched %>" 
                                     runat="server">
@@ -25,5 +25,10 @@
                 </asp:Repeater>
             </tr>
         </table>
+    </div
+
+    <div id="ordersCheck">
+        <asp:CheckBox runat="server" ID="showDispatched" Checked="false"
+            AutoPostBack="true" />Show dispatched orders?
     </div>
 </asp:Content>
