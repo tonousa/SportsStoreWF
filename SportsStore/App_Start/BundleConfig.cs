@@ -12,7 +12,7 @@ namespace SportsStore
             bundles.Add(new ScriptBundle("~/bundles/validation").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.validate.js",
-                "~/Scripts/jquery.validate.unobstrusive.js"));
+                "~/Scripts/jquery.validate.unobtrusive.js"));
         }
     }
 }
