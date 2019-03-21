@@ -25,7 +25,7 @@
                 </asp:Repeater>
             </tr>
         </table>
-    </div
+    </div>
 
     <div id="ordersCheck">
         <asp:CheckBox runat="server" ID="showDispatched" Checked="false"
