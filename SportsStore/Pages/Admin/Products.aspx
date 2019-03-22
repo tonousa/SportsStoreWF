@@ -35,8 +35,8 @@
                 <td><input name="name" value="<%# Item.Name %>" />
                     <input type="hidden" name="ProductID" value="<%# Item.ProductID %>" />
                 </td>
-                <td><input name="name" value="<%# Item.Name %>" /></td>
                 <td><input name="description" value="<%# Item.Description %>" /></td>
+                <td><input name="category" value="<%# Item.Category %>" /></td>
                 <td><input name="price" value="<%# Item.Price %>" /></td>
                 <td>
                     <asp:Button runat="server" CommandName="Update" Text="Update" />

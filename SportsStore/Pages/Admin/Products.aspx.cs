@@ -26,7 +26,33 @@ namespace SportsStore.Pages.Admin
 
         public void UpdateProduct(int productID)
         {
+            Product myProduct = repo.Products
+                .Where(p => p.ProductID == productID).FirstOrDefault();
+            if (myProduct != null && TryUpdateModel(myProduct, 
+                new FormValueProvider(ModelBindingExecutionContext)))
+            {
+                repo.SaveProduct(myProduct);
+            }
+        }
 
+        public void DeleteProduct(int productID)
+        {
+            Product myProduct = repo.Products
+                .Where(p => p.ProductID == productID).FirstOrDefault();
+            if (myProduct != null)
+            {
+                repo.DeleteProduct(myProduct);
+            }
+        }
+
+        public void InsertProduct()
+        {
+            Product myProduct = new Product();
+            if (TryUpdateModel(myProduct, 
+                new FormValueProvider(ModelBindingExecutionContext)))
+            {
+                repo.SaveProduct(myProduct);
+            }
         }
     }
 }
