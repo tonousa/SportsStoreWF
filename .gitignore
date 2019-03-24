@@ -9,7 +9,7 @@
 
 /bin/
 /obj/
-/.vs/
+.vs/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
